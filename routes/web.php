@@ -10,9 +10,15 @@ Route::get('/', function () {
 });
 //Viens produkts
 Route::get('product/{id}', function ($id) {
-    return view('product', [
-        'products' => Product::find($id)
-    ]);
+    $product=Product::find($id);
+
+    if($product) {
+        return view('product', [
+            'products' => Product::find($id)
+        ]);
+    } else {
+        abort('404');
+    }
 });
 /* Treniņu funkcijas
 Route::get('/hello', function () {
