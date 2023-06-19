@@ -12,7 +12,7 @@ class ProductController extends Controller
     public function index(Request $request) {    
         return view('products.index', [
         'products' => Product::latest()->filter
-        (request(['tag', 'search']))->get()
+        (request(['tag', 'search']))->paginate(4)
     ]);
     }
 
@@ -39,7 +39,14 @@ class ProductController extends Controller
                 'description' => 'required'
             ]);
 
+            if($request->hasFile('picture')) {
+                $formFields['picture'] = $request->file('picture')
+                ->store('pictures', 'public');
+            }
+
             Product::create($formFields);
 
+            return redirect('/')->with
+            ('message', 'Product created');
       }
 }
