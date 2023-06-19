@@ -2,24 +2,24 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Models\Product;
-//Visi produkti
-Route::get('/', function () {
-    return view('products', [
-        'products' => Product::all()
-    ]);
-});
-//Viens produkts
-Route::get('product/{id}', function ($id) {
-    $product=Product::find($id);
+use App\Http\Controllers\ProductController;
 
-    if($product) {
-        return view('product', [
-            'products' => Product::find($id)
-        ]);
-    } else {
-        abort('404');
-    }
-});
+
+//Visi produkti
+Route::get('/', [ProductController::class, 'index']);
+
+
+//uzrāda produkta izveidošanas aptauju
+Route::get('/products/create', [ProductController::class, 'create']);
+
+//glabas produktu datus
+Route::post('/products', [ProductController::class, 'store']);
+
+//Viens produkts
+Route::get('/products/{id}', [ProductController::class, 'show']);
+
+
+
 /* Treniņu funkcijas
 Route::get('/hello', function () {
     return response('<h1>hello</h1>');

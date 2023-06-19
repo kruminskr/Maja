@@ -16,10 +16,10 @@
                 alt=""
             />
 
-            <h3 class="text-2xl mb-2">{{$products['title']}}</h3>
-                <x-product-tags :tagsCsv="$products->tags" />
+            <h3 class="text-2xl mb-2">{{$product->title}}</h3>
+                <x-product-tags :tagsCsv="$product->tags" />
             <div class="text-lg my-4">
-                {{$products['price']}} $
+                {{$product->price}} $
             </div>
             <div class="border border-gray-200 w-full mb-6"></div>
             <div>
@@ -27,7 +27,7 @@
                     Product Description
                 </h3>
                 <div class="text-lg space-y-6">
-                    {{$products['description']}}
+                    {{$product->description}}
                     {{--
                     <a
                         href="mailto:test@test.com"

@@ -9,7 +9,7 @@
         />
     <div>
         <h3 class="text-2xl">
-            <a href="/product/{{$product['id']}}">{{$product['title']}}</a>
+            <a href="/products/{{$product['id']}}">{{$product['title']}}</a>
         </h3>
         <div class="text-xl font-bold mb-4">{{$product['price']}} $</div>
         <x-product-tags :tagsCsv="$product->tags" />
