@@ -31,6 +31,7 @@ class ProductController extends Controller
       }
 
       public function store(Request $request) {
+
             $formFields = $request->validate([
                 'title' => ['required', Rule::unique('products','title')] ,
                 'price' => 'required',
@@ -49,4 +50,43 @@ class ProductController extends Controller
             return redirect('/')->with
             ('message', 'Product created');
       }
+
+      public function edit($id) {
+
+            $product = Product::findOrFail($id);
+
+            return view('products.edit', ['product' => $product]);
+      }
+
+      public function update (Request $request, $id) {
+        $product = Product::findOrFail($id);
+
+        $formFields = $request->validate([
+            'title' => 'required',
+            'price' => 'required',
+            'tags' => 'required',
+            'quantity' => 'required',
+            'description' => 'required'
+        ]);
+
+        if($request->hasFile('picture')) {
+            $formFields['picture'] = $request->file('picture')
+            ->store('pictures', 'public');
+        }
+
+        $product->update($formFields);
+
+        return back()->with
+        ('message', 'Product updated');
+  }
+
+  public function destroy($id) {
+    $product = Product::findOrFail($id);
+
+    $product->delete();
+
+    return redirect('/')->with
+    ('message', 'Product deleted');
+  }
+
 }
