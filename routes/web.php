@@ -33,3 +33,5 @@ Route::get('/register', [UserController::class, 'create']);
 //izveidot jaunu lietotāju
 Route::post('/users', [UserController::class, 'store']);
 
+//Izlogot lietotaju
+Route::post('/logout', [UserController::class, 'logout']);

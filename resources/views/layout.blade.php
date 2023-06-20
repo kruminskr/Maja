@@ -33,6 +33,24 @@
                 ><img class="w-44" src="{{asset('images/logo.png')}}" alt="" class="logo"
             /></a>
             <ul class="flex space-x-6 mr-6 text-lg">
+                @auth
+                <li>
+                    <span class="font-bold uppercase">
+                        You are logged in as {{auth()->user()->name}}
+                    </span>
+                </li>
+                <li>
+                    <a href="/products/manage" class="hover:text-laravel"
+                        ><i class="fa-solid fa-gear"></i>
+                        Manage Products</a>
+                </li>
+                    <form class="inline" method="POST" action="/logout">
+                        @csrf
+                        <button>
+                            <i class="fa-solid fa-door-closed">Logout</i>
+                        </button>
+                    </form>
+                @else
                 <li>
                     <a href="/register" class="hover:text-laravel"
                         ><i class="fa-solid fa-user-plus"></i> Register</a
@@ -44,6 +62,7 @@
                         Login</a
                     >
                 </li>
+                @endauth
             </ul>
         </nav>
         <main>
@@ -58,7 +77,7 @@
             <a
                 href="/products/create"
                 class="absolute top-1/3 right-10 bg-black text-white py-2 px-5"
-                >Sign up</a
+                >create product</a
             >
         </footer>
         <x-flash-message />
