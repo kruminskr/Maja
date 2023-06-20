@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Models\Product;
 use App\Http\Controllers\ProductController;
+use App\Http\Controllers\UserController;
 
 
 //Visi produkti
@@ -25,4 +26,10 @@ Route::delete('/products/{id}', [ProductController::class, 'destroy']);
 
 //Viens produkts
 Route::get('/products/{id}', [ProductController::class, 'show']);
+
+//registracija
+Route::get('/register', [UserController::class, 'create']);
+
+//izveidot jaunu lietotāju
+Route::post('/users', [UserController::class, 'store']);
 
