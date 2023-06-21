@@ -45,6 +45,8 @@ class ProductController extends Controller
                 ->store('pictures', 'public');
             }
 
+            $formFields['user_id'] = auth()->id();
+
             Product::create($formFields);
 
             return redirect('/')->with
@@ -60,6 +62,10 @@ class ProductController extends Controller
 
       public function update (Request $request, $id) {
         $product = Product::findOrFail($id);
+
+        if($product->user_id != auth()-id()) {
+            abort(403, 'You do not have access to this');
+        }
 
         $formFields = $request->validate([
             'title' => 'required',
@@ -81,12 +87,22 @@ class ProductController extends Controller
   }
 
   public function destroy($id) {
+
     $product = Product::findOrFail($id);
+
+    if($product->user_id != auth()->id()) {
+        abort(403, 'You do not have access to this');
+    }
 
     $product->delete();
 
     return redirect('/')->with
     ('message', 'Product deleted');
+  }
+
+  public function manage() {
+    return view('products.manage', ['products' => auth()
+    ->user()->products()->get()]);
   }
 
 }

@@ -10,34 +10,39 @@ use App\Http\Controllers\UserController;
 Route::get('/', [ProductController::class, 'index']);
 
 //uzrāda produkta izveidošanas aptauju
-Route::get('/products/create', [ProductController::class, 'create']);
+Route::get('/products/create', [ProductController::class, 'create'])->middleware('auth');
 
 //glabas produktu datus
-Route::post('/products', [ProductController::class, 'store']);
+Route::post('/products', [ProductController::class, 'store'])->middleware('auth');
 
 //rediģēšana
-Route::get('/products/{id}/edit', [ProductController::class, 'edit']);
+Route::get('/products/{id}/edit', [ProductController::class, 'edit'])->middleware('auth');
 
 //redigensanas apstiprinasana
-Route::put('/products/{id}', [ProductController::class, 'update']);
+Route::put('/products/{id}', [ProductController::class, 'update'])->middleware('auth');
 
 //Dzēst
-Route::delete('/products/{id}', [ProductController::class, 'destroy']);
+Route::delete('/products/{id}', [ProductController::class, 'destroy'])->middleware('auth');
+
+//parvalidt produktus
+Route::get('/products/manage', [ProductController::class, 'manage'])->middleware('auth');
 
 //Viens produkts
 Route::get('/products/{id}', [ProductController::class, 'show']);
 
 //registracija
-Route::get('/register', [UserController::class, 'create']);
+Route::get('/register', [UserController::class, 'create'])->middleware('guest');
 
 //izveidot jaunu lietotāju
 Route::post('/users', [UserController::class, 'store']);
 
 //Izlogot lietotaju
-Route::post('/logout', [UserController::class, 'logout']);
+Route::post('/logout', [UserController::class, 'logout'])->middleware('auth');
 
 //Ielogošanās ekarāns
-Route::get('/login', [UserController::class, 'login']);
+Route::get('/login', [UserController::class, 'login'])
+->name('login')->middleware('guest');
 
 //Lietotāja ielogošanās
 Route::post('/users/login', [UserController::class, 'authenticate']);
+
