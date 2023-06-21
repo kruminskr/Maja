@@ -35,3 +35,9 @@ Route::post('/users', [UserController::class, 'store']);
 
 //Izlogot lietotaju
 Route::post('/logout', [UserController::class, 'logout']);
+
+//Ielogošanās ekarāns
+Route::get('/login', [UserController::class, 'login']);
+
+//Lietotāja ielogošanās
+Route::post('/users/login', [UserController::class, 'authenticate']);
