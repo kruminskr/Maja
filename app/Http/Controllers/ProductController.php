@@ -21,10 +21,13 @@ class ProductController extends Controller
       {
           $product = Product::findOrFail($id);
       
+          $product->increment('view_count');
+      
           return view('products.show', [
               'product' => $product
           ]);
       }
+      
 
       public function create() {
         return view('products.create');
@@ -63,7 +66,7 @@ class ProductController extends Controller
       public function update (Request $request, $id) {
         $product = Product::findOrFail($id);
 
-        if($product->user_id != auth()-id()) {
+        if($product->user_id != auth()->id()) {
             abort(403, 'You do not have access to this');
         }
 
@@ -104,5 +107,14 @@ class ProductController extends Controller
     return view('products.manage', ['products' => auth()
     ->user()->products()->get()]);
   }
+
+  public function mostViewed() {
+    $mostViewed = Product::orderBy('view_count', 'desc')->take(5)->get();
+
+    return view('products.most_viewed', [
+        'mostViewed' => $mostViewed,
+    ]);
+    }
+
 
 }

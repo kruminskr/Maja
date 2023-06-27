@@ -13,5 +13,6 @@
                 <p class="text-2xl text-gray-200 font-bold my-4">
                     High quality Module homes
                 </p>
+                <a href="/most-viewed" class="bg-black text-white rounded-xl py-1 px-3 mr-2">Most viwed</a>
             </div>
 </section>

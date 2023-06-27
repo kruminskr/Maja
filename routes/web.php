@@ -46,3 +46,4 @@ Route::get('/login', [UserController::class, 'login'])
 //Lietotāja ielogošanās
 Route::post('/users/login', [UserController::class, 'authenticate']);
 
+Route::get('/most-viewed', [ProductController::class, 'mostViewed']);

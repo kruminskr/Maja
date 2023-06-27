@@ -21,6 +21,7 @@ return new class extends Migration
             $table->double('price');
             $table->integer('quantity');
             $table->string('picture')->nullable();
+            $table->integer('view_count')->default(1);
             $table->timestamps();
         });
     }
