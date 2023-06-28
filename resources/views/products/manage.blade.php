@@ -2,7 +2,7 @@
 @section('content')
 <x-card class="p-10">
 <header>
-    <h1 class="text-3xl text-center font-bold my-6 uppercase">Manage Prodcuts</h1>
+    <h1 class="text-3xl text-center font-bold my-6 uppercase">@lang('messages.manage')</h1>
 </header>
 
 <table class="w-full table-auto rounded-sm">
@@ -14,14 +14,13 @@
                 <a href="">{{$product->title}}</a>
             </td>
             <td class="px-4 py-8 border-t border-b border-gray-300 text-lg">
-                <a href="/products/{{$product->id}}/edit" class="text-blue-400 px-6 py-2 rounded-xl"><i class="fa-solid fa-pen-to-square"></i>
-                    Edit</a>
+                <a href="/products/{{$product->id}}/edit" class="text-blue-400 px-6 py-2 rounded-xl"><i class="fa-solid fa-pen-to-square"></i>@lang('messages.edit')</a>
             </td>
             <td class="px-4 py-8 border-t border-b border-gray-300 text-lg">
                 <form method="POST" action="/products/{{$product->id}}">
                     @csrf
                     @method('DELETE')
-                    <button class="text-red-500"><i class="fa-solid fa-trash">Delete</i></button>
+                    <button class="text-red-500"><i class="fa-solid fa-trash">@lang('messages.delete')</i></button>
                 </form>
             </td>
         </tr>
@@ -37,6 +36,6 @@
     </table>
 </x-card>
 <x-card style="display: flex; justify-content: center; align-items: center;">
-  <a href="/products/create" class="bg-black text-white py-2 px-5">Create a new product</a>
+  <a href="/products/create" class="bg-black text-white py-2 px-5">@lang('messages.new-product')</a>
 </x-card>
 @endsection

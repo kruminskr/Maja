@@ -56,3 +56,14 @@ Route::get('/products/asc', [ProductController::class, 'sortByPriceAsc']);
 
 Route::get('/products/desc', [ProductController::class, 'sortByPriceDesc']);
 
+Route::get('/change-language/{locale}', function ($locale) {
+    if (!in_array($locale, ['en', 'lv'])) {        
+        abort(404);
+    }
+
+    App::setLocale($locale);
+    // Session
+    session()->put('locale', $locale);
+
+    return redirect()->back();
+});
