@@ -116,5 +116,19 @@ class ProductController extends Controller
     ]);
     }
 
+    public function sortByPriceAsc()
+    {
+        $products = Product::orderBy('price', 'asc')->get();
+
+        return view('products.asc', ['products' => $products]);
+    }
+
+    public function sortByPriceDesc()
+    {
+        $products = Product::orderBy('price', 'desc')->get();
+
+        return view('products.desc', ['products' => $products]);
+    }
+
 
 }

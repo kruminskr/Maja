@@ -21,23 +21,25 @@ class DatabaseSeeder extends Seeder
              'password' => 'parole12',
         ]);
 
-
+        
         \App\Models\Product::create([
             'user_id' => $user->id,
-            'title' => 'Compact',
-            'tags' => '2 Modules, Small',
-            'description' => 'Maza vasaras maja',
-            'price' => 35000,
-            'quantity' => 5,
+            'title' => 'Hyundai i30',
+            'tags' => 'Car, Disel, Hyundai',
+            'description' => 'Lieliska mašīna ikdiena. 2008 gada hyundai
+            i30. 1.6 litru dīzelis ar 85kw. Nāk komplektā ar sakabes āķi.',
+            'price' => 2700,
+            'quantity' => 1,
         ]);
 
         \App\Models\Product::create([
             'user_id' => $user->id,
-            'title' => 'Compact pluss',
-            'tags' => '3 Modules, Big',
-            'description' => 'Liela maja ikdienai',
+            'title' => 'Dzīvoklis Rīgā',
+            'tags' => 'Māja, Dzīvoklis',
+            'description' => 'Lielisks dzīvoklis Rīgas centrā.
+            75 kvadrātmetri, 2 istabas virtuve un tualete.',
             'price' => 50000,
-            'quantity' => 2,
+            'quantity' => 1,
         ]);
     }
 }

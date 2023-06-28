@@ -27,6 +27,10 @@ Route::delete('/products/{id}', [ProductController::class, 'destroy'])->middlewa
 //parvalidt produktus
 Route::get('/products/manage', [ProductController::class, 'manage'])->middleware('auth');
 
+Route::get('/products/asc', [ProductController::class, 'sortByPriceAsc']);
+
+Route::get('/products/desc', [ProductController::class, 'sortByPriceDesc']);
+
 //Viens produkts
 Route::get('/products/{id}', [ProductController::class, 'show']);
 
@@ -47,3 +51,8 @@ Route::get('/login', [UserController::class, 'login'])
 Route::post('/users/login', [UserController::class, 'authenticate']);
 
 Route::get('/most-viewed', [ProductController::class, 'mostViewed']);
+
+Route::get('/products/asc', [ProductController::class, 'sortByPriceAsc']);
+
+Route::get('/products/desc', [ProductController::class, 'sortByPriceDesc']);
+
