@@ -11,7 +11,7 @@
         @csrf
         <div class="mb-6">
             <label for="email" class="inline-block text-lg mb-2"
-                >Email</label
+                >@lang('messages.email')</label
             >
             <input
                 type="email"
@@ -28,9 +28,8 @@
         <div class="mb-6">
             <label
                 for="password"
-                class="inline-block text-lg mb-2"
-            >
-                Password
+                class="inline-block text-lg mb-2">
+                @lang('messages.password')
             </label>
             <input
                 type="password"
@@ -46,18 +45,16 @@
         <div class="mb-6">
             <button
                 type="submit"
-                class="bg-laravel text-white rounded py-2 px-4 hover:bg-black"
-            >
-                Sign in
+                class="bg-laravel text-white rounded py-2 px-4 hover:bg-black">
+                @lang('messages.sign-in')
             </button>
         </div>
 
         <div class="mt-8">
             <p>
-                Don't have an account?
+            @lang('messages.no-acc')
                 <a href="/register" class="text-laravel"
-                    >Sign Up</a
-                >
+                    >@lang('messages.signup')</a>
             </p>
         </div>
     </form>

@@ -20,7 +20,7 @@
                 <form method="POST" action="/products/{{$product->id}}">
                     @csrf
                     @method('DELETE')
-                    <button class="text-red-500"><i class="fa-solid fa-trash">@lang('messages.delete')</i></button>
+                    <button class="text-red-500">@lang('messages.delete')</button>
                 </form>
             </td>
         </tr>

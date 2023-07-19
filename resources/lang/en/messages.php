@@ -14,7 +14,7 @@ return [
     'password' => 'Password',
     'sign-in' => 'Sign in',
     'no-acc' => 'Dont have an account?',
-    'sign-up' => 'Sign Up',
+    'signup' => 'Sign Up',
     'logout' => 'Logout',
     'manage' => 'Manage My Products',
     'edit' => 'Edit',
